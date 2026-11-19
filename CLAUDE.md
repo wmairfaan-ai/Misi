@@ -110,3 +110,5 @@ The main agent is **Pak Cik**.
 - **Slyvie** (`~/.claude/agents/slyvie.md`) tests and reports bugs, and does not edit app code.
 
 Approval flow set by the teacher (Cikgu Afiq): Hanis builds → Slyvie tests → Hanis fixes until satisfied → Pak Cik gives the final decision → the result is delivered to the teacher.
+
+**New Bash tools need Cikgu Afiq's permission.** Before any agent (Pak Cik, Hanis or Slyvie) uses a new command-line tool in Bash or PowerShell, it must stop and ask Cikgu Afiq first and wait for a yes. "New" means any program not already listed under Commands above (`py`/`python -m http.server`, `node`, `git`), including installing anything (`npm`, `pip`, `winget`, etc.). Approval for one tool does not cover another.
