@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ms" class="mod-projektor">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Misi Jeti Kuala Senyum</title>
+  <!-- Tiada sumber luar: semua CSS, JS, SVG dan bunyi adalah tempatan. -->
+  <link rel="stylesheet" href="css/asas.css">
+  <link rel="stylesheet" href="css/susun-atur.css">
+  <link rel="stylesheet" href="css/animasi.css">
+  <link rel="stylesheet" href="css/kucing.css">
+  <link rel="stylesheet" href="css/kucing-rupa.css">
+  <link rel="stylesheet" href="css/kucing-pasangan.css">
+  <link rel="stylesheet" href="css/panel-guru.css">
+</head>
+<body>
+  <header id="bar-atas">
+    <!-- Tekan lama logo 3 saat untuk Panel Guru (tablet). Ikon diisi oleh utama.js. -->
+    <button id="logo" type="button" aria-label="Misi Jeti Kuala Senyum"></button>
+    <span id="bar-fasa"></span>
+    <div id="bar-pasang" aria-hidden="true"><div id="bar-pasang-isi"></div></div>
+    <span id="bar-masa" aria-label="Baki masa fasa"></span>
+    <button id="btn-bunyi" type="button" aria-label="Senyap / bunyi (kekunci M)"></button>
+  </header>
+
+  <main id="skrin" class="skrin" tabindex="-1"></main>
+
+  <div id="lantai-jeti" aria-hidden="true"></div>
+  <div id="pentas-kucing"></div>
+  <div id="lapisan-atas"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="suara-dialog" class="sr" aria-live="polite"></div>
+  <div id="tirai" hidden><div class="tirai-logo" aria-hidden="true"></div></div>
+  <div id="akar-pg"></div>
+
+  <noscript>
+    <p style="padding:2rem;font-size:1.4rem">Aplikasi ini memerlukan JavaScript. Sila hidupkan JavaScript dalam pelayar.</p>
+  </noscript>
+
+  <!-- Susunan skrip PENTING (tag biasa, bukan modul). -->
+  <script src="js/kandungan.js"></script>
+  <!-- js/kunci-jawapan.js (tempatan sahaja, .gitignore) TIDAK dimuat di sini.
+       Ia disuntik secara dinamik oleh js/utama.js (MJ.kunci.muat) hanya apabila perlu. -->
+  <script src="js/cincang.js"></script>
+  <script src="js/keadaan.js"></script>
+  <script src="js/bunyi.js"></script>
+  <script src="js/pemasa.js"></script>
+  <script src="js/ikon.js"></script>
+  <script src="js/seret.js"></script>
+  <script src="js/dialog.js"></script>
+  <script src="js/kucing-rig.js"></script>
+  <script src="js/kucing-gerak.js"></script>
+  <script src="js/kucing-mesin.js"></script>
+  <script src="js/kucing-pasangan.js"></script>
+  <script src="js/kucing-interaksi.js"></script>
+  <script src="js/penghala.js"></script>
+  <script src="js/skrin/mula.js"></script>
+  <script src="js/skrin/daftar.js"></script>
+  <script src="js/skrin/peta.js"></script>
+  <script src="js/skrin/misi1.js"></script>
+  <script src="js/skrin/misi2.js"></script>
+  <script src="js/skrin/misi3.js"></script>
+  <script src="js/skrin/surat.js"></script>
+  <script src="js/skrin/bonus.js"></script>
+  <script src="js/skrin/botol.js"></script>
+  <script src="js/skrin/peti.js"></script>
+  <script src="js/skrin/galeri.js"></script>
+  <script src="js/skrin/upacara.js"></script>
+  <script src="js/skrin/tiket.js"></script>
+  <script src="js/panel-guru.js"></script>
+  <script src="js/utama.js"></script>
+</body>
+</html>

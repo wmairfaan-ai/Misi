@@ -1,0 +1,110 @@
+/* =====================================================================
+   panel-guru.css - Panel Guru (tindanan dan halaman penuh #/guru)
+   Saiz tetap 16px (tidak ikut saiz projektor), unit em di dalam.
+   ===================================================================== */
+#akar-pg { font-size: 16px; line-height: 1.4; }
+#akar-pg:empty { display: none; }
+.pg-latar {
+  position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center;
+  background: rgba(5, 12, 20, .72); padding: 1.5vh 1.5vw;
+}
+.pg {
+  display: flex; flex-direction: column; width: min(1180px, 97vw); max-height: 96vh;
+  background: #fff; color: #14202b; border: 3px solid #0B3C5D; border-radius: .8em; overflow: hidden;
+  box-shadow: 0 1em 3em rgba(0,0,0,.45);
+}
+.pg-latar.pg-penuh { position: static; display: block; background: none; padding: .8em; min-height: calc(100vh - var(--bar-h)); }
+.pg-latar.pg-penuh .pg { width: 100%; max-width: 1400px; margin: 0 auto; max-height: none; overflow: visible; }
+
+.pg-kepala {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5em 1em; padding: .6em 1em;
+  background: #0B3C5D; color: #fff;
+}
+.pg-kepala h2 { font-size: 1.25em; margin: 0; }
+.pg-masa-hidup { font-variant-numeric: tabular-nums; font-weight: 700; }
+.pg-status { flex: 1; font-size: .9em; color: #FFE08A; min-width: 6em; }
+.pg-kira { font-size: .85em; opacity: .85; }
+.pg-kepala-butang { display: flex; flex-wrap: wrap; gap: .4em; }
+.pg-kepala .pg-btn { background: #fff; }
+.pg-kepala .pg-btn.aktif { background: #FFD54F; }
+
+.pg-banner { padding: .6em 1em; font-size: .92em; }
+.pg-amaran { background: #FFF1D6; border-bottom: 2px solid #C77800; color: #4a2c00; }
+
+.pg-tab { display: flex; flex-wrap: wrap; gap: .25em; padding: .5em .8em 0; background: #E9EEF2; border-bottom: 2px solid #0B3C5D; }
+.pg-tab-btn {
+  border: 2px solid #9fb0bf; border-bottom: none; border-radius: .5em .5em 0 0; background: #f7f9fb;
+  padding: .45em .9em; font-weight: 700; cursor: pointer; min-height: 2.6em;
+}
+.pg-tab-btn.aktif { background: #fff; border-color: #0B3C5D; color: #0B3C5D; position: relative; top: 2px; }
+.pg-tab-gate { border-style: dashed; }
+.pg-tab-gate::after { content: " (Tunjuk)"; font-weight: 400; font-size: .8em; color: #6b4b00; }
+
+.pg-isi { padding: .8em 1em 1.2em; overflow: auto; flex: 1; }
+.pg-penuh .pg-isi { overflow: visible; }
+.pg-bahagian { margin-bottom: 1.2em; }
+.pg-bahagian h3 { font-size: 1.05em; margin: 0 0 .4em; color: #0B3C5D; border-bottom: 2px solid #E1E8EE; padding-bottom: .2em; }
+.pg-nota { font-size: .88em; color: #3a4a58; margin: .2em 0 .6em; }
+.pg-mesej { color: #8A2B1D; font-weight: 700; min-height: 1.2em; }
+.pg-kecil { font-size: .82em; color: #3a4a58; }
+.pg-kecil.blok { display: block; }
+.pg-besar { font-size: 1.4em; font-weight: 800; }
+.pg-nombor { font-weight: 800; font-variant-numeric: tabular-nums; }
+.pg-ok { color: #1E6B45; font-weight: 800; }
+.pg-tiada { color: #8A2B1D; font-weight: 800; }
+
+.pg-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .3em;
+  min-height: 2.5em; padding: .35em .8em; margin: .15em .2em .15em 0;
+  border: 2px solid #1d2a36; border-radius: .45em; background: #fff; color: #14202b;
+  font-weight: 700; cursor: pointer;
+}
+.pg-btn:hover { background: #EEF4F9; }
+.pg-btn.aktif { background: #0B4F7A; color: #fff; }
+.pg-btn-utama { background: #0B4F7A; border-color: #083a5a; color: #fff; }
+.pg-btn-utama:hover { background: #0d5d90; }
+.pg-btn-bahaya { background: #8A2B1D; border-color: #5c1b12; color: #fff; }
+.pg-btn-bahaya:hover { background: #a3361f; }
+.pg-btn-kecil { min-height: 2.1em; padding: .2em .55em; font-size: .88em; }
+.pg-baris-butang { display: flex; flex-wrap: wrap; align-items: center; gap: .3em .5em; margin: .4em 0; }
+.pg-grid-butang { display: grid; grid-template-columns: repeat(auto-fill, minmax(11em, 1fr)); gap: .4em; margin: .4em 0; }
+.pg-grid-butang .pg-btn { margin: 0; justify-content: flex-start; text-align: left; }
+
+.pg-jadual-bekas { overflow-x: auto; }
+.pg-jadual { border-collapse: collapse; width: 100%; font-size: .92em; }
+.pg-jadual th, .pg-jadual td { border: 1px solid #c9d4dd; padding: .35em .45em; text-align: left; vertical-align: top; }
+.pg-jadual thead th { background: #E9EEF2; position: sticky; top: 0; }
+.pg-jadual tbody th { background: #F7F9FB; white-space: nowrap; }
+.pg-metrik select { min-width: 3.2em; }
+.pg-metrik textarea { width: 100%; min-width: 12em; }
+.pg-jadual .pg-semak { display: flex; margin: .1em 0; }
+
+.pg-semak { display: inline-flex; align-items: center; gap: .35em; margin: .2em .8em .2em 0; cursor: pointer; }
+.pg-semak input { width: 1.2em; height: 1.2em; }
+.pg-medan { display: block; margin: .45em 0; font-weight: 600; }
+.pg-medan input, .pg-medan select { display: block; margin-top: .2em; }
+.pg-medan.pg-sebaris { display: inline-flex; align-items: center; gap: .5em; margin-right: 1em; }
+.pg-medan.pg-sebaris input, .pg-medan.pg-sebaris select { display: inline-block; margin-top: 0; }
+#akar-pg input[type="text"], #akar-pg input[type="password"], #akar-pg input[type="number"], #akar-pg select, #akar-pg textarea {
+  border: 2px solid #1d2a36; border-radius: .4em; padding: .3em .45em; background: #fff; min-height: 2.2em;
+}
+.pg-input-kecil { width: 4.5em; }
+.pg-klip { display: inline-flex; align-items: center; gap: .3em; margin-top: .3em; }
+.pg-kod-teks { width: 100%; font-family: Consolas, "Courier New", monospace; font-size: .85em; }
+.pg-fail { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+.pg-fail-label { position: relative; }
+
+.pg-senarai { margin: .2em 0 .6em; padding-left: 1.3em; }
+.pg-senarai li { margin: .3em 0; }
+
+.pg-pin { max-width: 24em; margin: 1.5em auto; text-align: left; }
+.pg-pin input { font-size: 1.4em; letter-spacing: .3em; width: 8em; }
+
+.pg-gate {
+  max-width: 40em; margin: 1.5em auto; padding: 1em 1.4em; text-align: left;
+  border: 3px dashed #C77800; border-radius: .8em; background: #FFF8E9;
+}
+.pg-gate h3 { margin-top: 0; color: #6b4b00; }
+
+/* lencana bot di dalam PG ikut saiz PG */
+#akar-pg .lencana-bot { font-size: 1em; }

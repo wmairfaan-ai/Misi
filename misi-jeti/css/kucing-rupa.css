@@ -1,0 +1,67 @@
+/* =====================================================================
+   kucing-rupa.css - rupa Si Oyen (oren berjalur) & Si Kiko (Ragdoll blue
+   point). Satu rig (kucing-rig.js), dua rupa melalui pemboleh ubah CSS.
+   Garis luar gelap (Oyen ~3 px, Kiko ~3.5 px pada saiz biasa) untuk projektor.
+   ===================================================================== */
+.kucing--oyen {
+  --k-badan: #F08A24; --k-jalur: #C2621A; --k-perut: #FFE7C2; --k-garis: #5A2E0E;
+  --k-telinga-dalam: #F7B9A0; --k-mata: #2B1A0E; --k-hidung: #E36A6A; --k-lebar: 4px;
+}
+.kucing--kiko {
+  --k-badan: #F3F0E8; --k-titik: #7F8C9D; --k-garis: #2F3B4A; --k-mata-biru: #3E86D6;
+  --k-telinga-dalam: #C9A9AE; --k-hidung: #C98C9A; --k-lebar: 4.6px;
+}
+
+/* Bayang di lantai */
+.k-bayang { fill: rgba(0, 0, 0, .32); }
+
+/* Badan, kepala, kaki */
+.r-badan, .r-kepala { fill: var(--k-badan); stroke: var(--k-garis); stroke-width: var(--k-lebar); stroke-linejoin: round; }
+.r-perut { fill: var(--k-perut, #fff); stroke: none; }
+.r-jalur { fill: none; stroke: var(--k-jalur, #999); stroke-width: 5px; stroke-linecap: round; }
+.r-kaki { fill: var(--k-perut, #fff); stroke: var(--k-garis); stroke-width: calc(var(--k-lebar) * .8); }
+.kucing--kiko .r-kaki { fill: #FFFFFF; }
+.r-telinga-dalam { fill: var(--k-telinga-dalam); stroke: none; }
+.r-moncong { fill: var(--k-perut, #FBF8F2); stroke: none; }
+.kucing--kiko .r-moncong { fill: #F7F4EE; }
+
+/* Mata */
+.r-mata { fill: var(--k-mata, #222); stroke: var(--k-garis); stroke-width: 1.5px; }
+.r-mata-biru { fill: var(--k-mata-biru); stroke: #1F3550; stroke-width: 1.5px; }
+.r-anak { fill: #12223a; }
+.r-kilau { fill: #fff; }
+
+/* Hidung, misai, mulut */
+.r-hidung { fill: var(--k-hidung); stroke: var(--k-garis); stroke-width: 1.5px; stroke-linejoin: round; }
+.r-misai { fill: none; stroke: var(--k-garis); stroke-width: 1.8px; stroke-linecap: round; }
+.m-tutup, .m-senyum { fill: none; stroke: var(--k-garis); stroke-width: 2.6px; stroke-linecap: round; stroke-linejoin: round; }
+.m-buka { fill: #7a2a2a; stroke: var(--k-garis); stroke-width: 2px; }
+.k-pipi-merah { fill: #FF8FA3; opacity: .5; }
+
+/* Ekor: garis gelap lebar di bawah, warna di atas */
+.r-ekor, .r-ekor-garis { fill: none; stroke-linecap: round; }
+.kucing--oyen .r-ekor { stroke: var(--k-badan); stroke-width: 12px; }
+.kucing--oyen .r-ekor-garis { stroke: var(--k-garis); stroke-width: 20px; }
+.kucing--kiko .r-ekor { stroke: var(--k-titik); stroke-width: 18px; }
+.kucing--kiko .r-ekor-garis { stroke: var(--k-garis); stroke-width: 27px; }
+
+/* Kiko: titik blue point, surai */
+.r-titik { fill: var(--k-titik); stroke: var(--k-garis); stroke-width: var(--k-lebar); stroke-linejoin: round; }
+.r-topeng { fill: var(--k-titik); opacity: .82; stroke: none; }
+.r-surai { fill: #FFFFFF; stroke: var(--k-garis); stroke-width: 3px; stroke-linejoin: round; }
+
+/* Aksesori */
+.r-selendang { fill: #D93A3A; stroke: var(--k-garis); stroke-width: 3px; stroke-linejoin: round; }
+.r-reben { fill: #1F3A6B; stroke: #0f1c33; stroke-width: 2.5px; }
+.r-loceng { fill: #F2C230; stroke: #7a5a00; stroke-width: 2px; }
+.r-loceng-garis { fill: none; stroke: #7a5a00; stroke-width: 1.6px; }
+.r-topi { fill: #1E3A5F; stroke: #0b1622; stroke-width: 3px; stroke-linejoin: round; }
+.r-topi-pita { fill: #F2C230; stroke: #7a5a00; stroke-width: 1.5px; }
+.r-lencana { fill: #F2C230; stroke: #7a5a00; stroke-width: 1.5px; }
+.r-sampul { fill: #FFF6E0; stroke: #6b4b2a; stroke-width: 2.5px; }
+.r-sampul-garis { fill: none; stroke: #6b4b2a; stroke-width: 2px; }
+
+/* Efek */
+.k-efek text.ef { fill: #1d2a36; font-family: "Segoe UI", Verdana, sans-serif; font-weight: 800; font-size: 28px; stroke: #fff; stroke-width: 1.5px; paint-order: stroke; }
+.ef-hati { fill: #F06292; stroke: #8a1c45; stroke-width: 2px; }
+.ef-kilau { fill: #FFD54F; stroke: #a17800; stroke-width: 1.5px; }

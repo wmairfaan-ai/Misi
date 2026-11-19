@@ -1,0 +1,8 @@
+# Lapisan kedua (lapisan pertama: misi-jeti/.gitignore)
+# Kunci jawapan: TEMPATAN SAHAJA, jangan sesekali diterbitkan
+misi-jeti/js/kunci-jawapan.js
+# Nota pembina: tidak diterbitkan
+misi-jeti/NOTA-PEMBINAAN.md
+
+__pycache__/
+*.pyc
