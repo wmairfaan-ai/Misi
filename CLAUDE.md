@@ -7,8 +7,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 "Misi Jeti Kuala Senyum": an offline educational web game for **Sains KSSR Tahun 4, topic Ketumpatan** (40 min, 30 pupils in 6 groups called "bot"). It **accompanies a real water experiment**: pupils predict and test physical objects at their desks, and the app guides missions, records codes and shows hints, infographics, scores and a ceremony. It is mainly used on one teacher laptop and a classroom projector, with optional tablets.
 
 - `reka-bentuk-sistem.md` is the **design spec and source of truth** (written in Bahasa Melayu). Read the relevant section before changing behaviour. If code must deviate from it, record why in `misi-jeti/NOTA-PEMBINAAN.md`.
-- `misi-jeti/` holds the app. As of this writing it is being built from the spec (DRAF 2, approved). If a file named in the spec does not exist yet, it has not been built.
+- `misi-jeti/` holds the app. It is built from the spec (DRAF 2, approved) and passed QA round 6 with status SEDIA (ready). If a file named in the spec does not exist, it was never built.
 - All user-facing text is **Bahasa Melayu (Rumi)**, written for 10-year-olds.
+
+## Repository
+
+- GitHub repository: **`wmairfaan-ai/Misi-Jeti`** (https://github.com/wmairfaan-ai/Misi-Jeti). GitHub does not allow spaces, so "Misi Jeti" becomes `Misi-Jeti`. Default branch: `main`. This is the only official repository; `wmairfaan-ai/Edu-Jeti` and `wmairfaan2/Misi-Jeti` are no longer used.
+- **Never commit the answer key.** `misi-jeti/js/kunci-jawapan.js` and `misi-jeti/NOTA-PEMBINAAN.md` are excluded by two `.gitignore` layers: the repository root and `misi-jeti/`. Before every push, confirm with `git ls-files | Select-String kunci-jawapan` that it returns nothing.
+- A clone or a GitHub Pages copy has no `kunci-jawapan.js`. On those copies the teacher must set the mission codes and the Botol Misteri secret word by hand in Teacher Panel > Kunci (see `misi-jeti/README.md`). `tests/semak-kandungan.js` skips checks 4 and 5 when the file is missing.
 
 ## Commands
 
@@ -16,8 +22,10 @@ No build step, package manager or framework. To run locally (Windows/PowerShell)
 
 ```
 cd misi-jeti
-py -m http.server 8000        # or: python -m http.server 8000
+py -m http.server 8000 --bind 127.0.0.1        # or: python -m http.server 8000 --bind 127.0.0.1
 ```
+
+Keep `--bind 127.0.0.1`. Without it the server listens on every network, so any device on the school Wi-Fi could download `js/kunci-jawapan.js` and `NOTA-PEMBINAAN.md`.
 
 - Pupil screen: `http://localhost:8000`.
 - Teacher Panel in a second window: `http://localhost:8000/#/guru`.
@@ -26,8 +34,21 @@ py -m http.server 8000        # or: python -m http.server 8000
 - Mute: `M`.
 - Use localhost rather than `file://`, because localStorage and Web Crypto behave differently on `file://`.
 
+Tests (run from `misi-jeti/`; exit code 0 = pass, 1 = fail; AMARAN lines are warnings only):
+
+```
+node tests/semak-statik.js      # architecture rules: script tags, offline, guru-key isolation, transform/opacity, .gitignore
+node tests/semak-kandungan.js   # spec 6.5 acceptance: hint ladder, no answer words, no plain-text codes, dialogue length
+node tests/semak-cincang.js     # SHA-256 fallback in cincang.js matches node:crypto
+node tests/ujian-pelayar.mjs    # headless Chrome/Edge smoke test; needs the server running
+node tests/ujian-susun-atur.mjs # headless layout check; needs the server running
+```
+
+- The `.mjs` browser tests need Node 22+ and Chrome or Edge. They accept `CHROME="C:/path/chrome.exe"` and `URL="http://localhost:8000/"` as environment variables.
+- Each file is one standalone script; there is no runner and no way to select a single check inside a file.
+
 Tests and QA reports (owned by the QA agent):
-- Tests go in `misi-jeti/tests/` and must not need any dependencies.
+- Tests go in `misi-jeti/tests/` and must not need any dependencies. Tests must read codes from `kunci-jawapan.js` at runtime and never hard-code them.
 - QA reports go in `qa/laporan-YYYY-MM-DD.md`.
 - Spec 6.5 requires an acceptance check: no hint or dialogue text in `js/kandungan.js` may contain that mission's answer words, and no mission code may appear in plain text.
 
@@ -50,6 +71,8 @@ Tests and QA reports (owned by the QA agent):
 - **Answer secrecy:**
   - Mission codes are stored only as SHA-256 hashes. `cincang.js` uses Web Crypto, with a small JavaScript SHA-256 fallback for `file://`.
   - The readable answer key is in `js/kunci-jawapan.js`. It is local-only, listed in `.gitignore`, and must never be published to GitHub Pages.
+  - `kunci-jawapan.js` is **not** a `<script>` tag in `index.html`. On `localhost` only, it is loaded dynamically at boot (`MJ.kunci.muat()`) to hash the codes, then removed from memory (`MJ.KUNCI`). It is reloaded only after the Teacher Panel PIN, or in the Galeri after Peti Mak Tok opens. Codes the teacher types by hand in Panel Guru > Kunci are marked "manual" and are not overwritten by the file.
+  - The public build uses `kodHashLalai` and `kataRahsiaHashLalai` in `kandungan.js` (hashes only). `KANDUNGAN.kataRahsia` must not exist.
 - **Cat companions (Si Oyen and Si Kiko):**
   - One shared SVG rig with two skins (`kucing-rig.js`).
   - Three parallel state machines per cat: location, emotion and mouth (`kucing-mesin.js`).
