@@ -12,7 +12,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository
 
-- GitHub repository: **`wmairfaan-ai/Misi-Jeti`** (https://github.com/wmairfaan-ai/Misi-Jeti). GitHub does not allow spaces, so "Misi Jeti" becomes `Misi-Jeti`. Default branch: `main`. This is the only official repository; `wmairfaan-ai/Edu-Jeti` and `wmairfaan2/Misi-Jeti` are no longer used.
+- GitHub repository: **`wmairfaan-ai/Misi`** (https://github.com/wmairfaan-ai/Misi). Default branch: `main`. This is the only official repository; `wmairfaan-ai/Misi-Jeti`, `wmairfaan-ai/Edu-Jeti` and `wmairfaan2/Misi-Jeti` are no longer used.
+- In the local clone the git remote for it is named **`misi`**, so push with `git push misi main`. `origin` still points to the unused `Misi-Jeti`; never push there.
 - **Never commit the answer key.** `misi-jeti/js/kunci-jawapan.js` and `misi-jeti/NOTA-PEMBINAAN.md` are excluded by two `.gitignore` layers: the repository root and `misi-jeti/`. Before every push, confirm with `git ls-files | Select-String kunci-jawapan` that it returns nothing.
 - A clone or a GitHub Pages copy has no `kunci-jawapan.js`. On those copies the teacher must set the mission codes and the Botol Misteri secret word by hand in Teacher Panel > Kunci (see `misi-jeti/README.md`). `tests/semak-kandungan.js` skips checks 4 and 5 when the file is missing.
 
